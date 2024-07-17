@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <div id="resultsContainer"></div>
+
+    <script>
+        // Load and display results
+        let results = {};  // Load results data here
+
+        function displayResults() {
+            let container = document.getElementById('resultsContainer');
+            container.innerHTML = `<h2>Your Score: ${results.score}</h2>`;
+            results.questions.forEach((q, index) => {
+                container.innerHTML += `
+                    <h3>Question ${index + 1}: ${q.text}</h3>
+                    <p>Your Answer: ${q.userAnswer}</p>
+                    <p>Correct Answer: ${q.correctAnswer}</p>
+                `;
+            });
+        }
+
+        displayResults();
+    </script>
+</body>
+</html>

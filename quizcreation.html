@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create a Quiz</title>
+</head>
+<body>
+    <h1>Create a New Quiz</h1>
+    <form id="quizForm">
+        <label for="title">Quiz Title:</label>
+        <input type="text" id="title" name="title" required><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br>
+        <div id="questions">
+            <div class="question">
+                <label>Question 1:</label>
+                <input type="text" name="question[]" required><br>
+                <label>Option A:</label>
+                <input type="text" name="optionA[]" required><br>
+                <label>Option B:</label>
+                <input type="text" name="optionB[]" required><br>
+                <label>Option C:</label>
+                <input type="text" name="optionC[]" required><br>
+                <label>Option D:</label>
+                <input type="text" name="optionD[]" required><br>
+                <label>Correct Answer:</label>
+                <input type="text" name="correct[]" required><br>
+            </div>
+        </div>
+        <button type="button" onclick="addQuestion()">Add Another Question</button>
+        <button type="submit">Create Quiz</button>
+    </form>
+
+    <script>
+        function addQuestion() {
+            // Add new question fields dynamically
+            let questionsDiv = document.getElementById('questions');
+            let questionCount = questionsDiv.getElementsByClassName('question').length;
+            let newQuestion = document.createElement('div');
+            newQuestion.className = 'question';
+            newQuestion.innerHTML = `
+                <label>Question ${questionCount + 1}:</label>
+                <input type="text" name="question[]" required><br>
+                <label>Option A:</label>
+                <input type="text" name="optionA[]" required><br>
+                <label>Option B:</label>
+                <input type="text" name="optionB[]" required><br>
+                <label>Option C:</label>
+                <input type="text" name="optionC[]" required><br>
+                <label>Option D:</label>
+                <input type="text" name="optionD[]" required><br>
+                <label>Correct Answer:</label>
+                <input type="text" name="correct[]" required><br>
+            `;
+            questionsDiv.appendChild(newQuestion);
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Handle quiz creation
+        });
+    </script>
+</body>
+</html>

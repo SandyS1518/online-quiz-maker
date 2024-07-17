@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Quizzes</title>
+</head>
+<body>
+    <h1>Available Quizzes</h1>
+    <div id="quizList"></div>
+
+    <script>
+        let quizzes = [];  // Load quizzes data here
+
+        function displayQuizzes() {
+            let quizList = document.getElementById('quizList');
+            quizzes.forEach(quiz => {
+                let quizElement = document.createElement('div');
+                quizElement.innerHTML = `
+                    <h2>${quiz.title}</h2>
+                    <p>${quiz.description}</p>
+                    <button onclick="takeQuiz(${quiz.id})">Take Quiz</button>
+                `;
+                quizList.appendChild(quizElement);
+            });
+        }
+
+        function takeQuiz(quizId) {
+            // Handle quiz taking
+        }
+
+        displayQuizzes();
+    </script>
+</body>
+</html>

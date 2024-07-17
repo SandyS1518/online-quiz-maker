@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Take a Quiz</title>
+</head>
+<body>
+    <h1>Take a Quiz</h1>
+    <div id="quizContainer"></div>
+    <button id="submitQuiz" style="display:none;">Submit Quiz</button>
+
+    <script>
+        let currentQuestionIndex = 0;
+        let quiz = {};  // Load quiz data here
+
+        function loadQuestion() {
+            if (currentQuestionIndex < quiz.questions.length) {
+                let question = quiz.questions[currentQuestionIndex];
+                document.getElementById('quizContainer').innerHTML = `
+                    <h2>${question.text}</h2>
+                    <input type="radio" name="answer" value="A"> ${question.optionA}<br>
+                    <input type="radio" name="answer" value="B"> ${question.optionB}<br>
+                    <input type="radio" name="answer" value="C"> ${question.optionC}<br>
+                    <input type="radio" name="answer" value="D"> ${question.optionD}<br>
+                `;
+                currentQuestionIndex++;
+            } else {
+                document.getElementById('quizContainer').innerHTML = `<h2>Quiz Completed</h2>`;
+                document.getElementById('submitQuiz').style.display = 'block';
+            }
+        }
+
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            // Handle quiz submission
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>
